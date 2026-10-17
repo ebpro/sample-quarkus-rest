@@ -18,4 +18,6 @@ jobs:
       pr_number: ${{ github.event.pull_request.number }}
       repo: ${{ github.repository }}
       agents: all
-    secrets: inherit
+    secrets:
+      LLM_REVIEW_ENDPOINT: ${{ secrets.LLM_REVIEW_ENDPOINT }}
+      LLM_REVIEW_TOKEN: ${{ secrets.LLM_REVIEW_TOKEN }}
