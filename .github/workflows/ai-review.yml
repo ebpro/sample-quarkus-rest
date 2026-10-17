@@ -1,5 +1,5 @@
 # AI Review — thin caller for the ebpro reusable AI review workflow.
-# Provided by: ebpro/quarkus-ci-runner — see its README for details.
+# Provided by: ebpro/ai-review (public hub) — see its README for details.
 name: AI Review
 
 on:
@@ -13,7 +13,7 @@ permissions:
 jobs:
   ai-review:
     if: github.event.pull_request.head.repo.full_name == github.event.pull_request.base.repo.full_name
-    uses: ebpro/quarkus-ci-runner/.github/workflows/ai-review-reusable.yml@main
+    uses: ebpro/ai-review/.github/workflows/ai-review-reusable.yml@main
     with:
       pr_number: ${{ github.event.pull_request.number }}
       repo: ${{ github.repository }}
