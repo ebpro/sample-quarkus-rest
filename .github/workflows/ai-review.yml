@@ -1,0 +1,23 @@
+# AI Review — thin caller for the ebpro reusable AI review workflow.
+# Provided by: ebpro/ai-review (public hub) — see its README for details.
+name: AI Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  ai-review:
+    if: github.event.pull_request.head.repo.full_name == github.event.pull_request.base.repo.full_name
+    uses: ebpro/ai-review/.github/workflows/ai-review-reusable.yml@main
+    with:
+      pr_number: ${{ github.event.pull_request.number }}
+      repo: ${{ github.repository }}
+      agents: all
+    secrets:
+      LLM_REVIEW_ENDPOINT: ${{ secrets.LLM_REVIEW_ENDPOINT }}
+      LLM_REVIEW_TOKEN: ${{ secrets.LLM_REVIEW_TOKEN }}
