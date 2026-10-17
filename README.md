@@ -245,7 +245,7 @@ docker network rm product-catalog-network
 
 The same stack can be managed with Docker Compose.
 
-First clean up the variables that may interfere with Compose. `compose.yml` define the required environment variables internally, they can be overriden via a `.env` file if needed (see the provided `.env.example`).
+First clean up the variables that may interfere with Compose. `compose.yml` define the required environment variables internally, they can be overridden via a `.env` file if needed (see the provided `.env.example`).
 
 So first **remove the environment variables from the current shell session to avoid conflicts with Compose**:
 
@@ -481,7 +481,7 @@ The project highlights two distinct approaches to Data Access in the Java ecosys
 1. Standard JPA Repository (`ProductRepository`). Uses the `EntityManager` and explicit JPQL.
   - **Objective:** Understand the **Persistence Context** and **Entity Lifecycle** (Managed, Detached, Removed).
   - **Key Lessons:** Explicit transaction management and the importance of `em.merge()` before deletion.
-2. Quarkus Panache (`ProductRepositoryV5`). Ues the `PanacheRepository<T>` interface.
+2. Quarkus Panache (`ProductRepositoryV5`). Uses the `PanacheRepository<T>` interface.
   - **Objective:** Demonstrate developer productivity.
   - **Key Lessons:** Writing high-level queries like `list("stock > 0")` and inheriting standard CRUD methods without boilerplate.
 
@@ -638,4 +638,4 @@ echo "Total Startup Time: $((END_TIME - START_TIME))ms"
 
 ### Continuous integration
 
-The project is configured with GitHub Actions to run tests on every push and pull request. The workflow is defined in `.github/workflows/ci.yml` and includes steps to set up Java, build the project, and run tests. The tests will automatically use Testcontainers to spin up a PostgreSQL instance, ensuring that the integration tests are run in an environment that closely mimics production without requiring manual setup. It will also build the jvm and native images an push them to Docker Hub if the tests pass and the branch is `main` (you need to set up secrets for Docker Hub credentials in the repository settings for this to work). This CI pipeline ensures that every change is validated against the full test suite and that production-ready images are built and available for deployment.
+The project is configured with GitHub Actions to run tests on every push and pull request. The workflow is defined in `.github/workflows/ci.yml` and includes steps to set up Java, build the project, and run tests. The tests will automatically use Testcontainers to spin up a PostgreSQL instance, ensuring that the integration tests are run in an environment that closely mimics production without requiring manual setup. It will also build the jvm and native images and push them to Docker Hub if the tests pass and the branch is `main` (you need to set up secrets for Docker Hub credentials in the repository settings for this to work). This CI pipeline ensures that every change is validated against the full test suite and that production-ready images are built and available for deployment.
